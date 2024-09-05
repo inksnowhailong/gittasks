@@ -20,7 +20,7 @@ async function main() {
   // 列表命令
   list(program);
   /**判断 pkg中的脚手架版本 并判断是否需要更新 */
-  //   await checkVersion(config.name, config.version);
+  //  checkVersion(config.name, config.version);
   /**program.parse必须在 注册命令后 parse  否则命令 无效 */
   program.parse(process.argv);
 }
@@ -45,12 +45,12 @@ async function showHeader(version) {
   const text = await figlet.text("Git Tasks\n");
 
   clog.zingUI(`
- ${"-".repeat(35)}
+ ${"-".repeat(40)}
 
  ${text}
 
               ${version}
- ${"-".repeat(35)}
+ ${"-".repeat(40)}
  `);
 }
 /**zing 启动! */
