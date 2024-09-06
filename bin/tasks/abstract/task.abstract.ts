@@ -1,4 +1,3 @@
-
 /** 单个任务类型 */
 export interface Task{
     /**任务名称 */
@@ -12,13 +11,15 @@ export interface Task{
 /**任务的数组 */
 export interface TasksList extends Array<Task>{}
 
-export abstract class ListAbstract{
+export abstract class TaskAbstract{
 
     /**获取列表 */
-    abstract getList<T = TasksList>(...ary:any[]):T|Promise<T>;
+    abstract getList<T = TasksList|Error>(...ary:any[]):T|Promise<T>;
     /**添加任务 */
-    abstract addTask<T = any>(task:Task):T;
+    abstract addTask<T = Task|Error>(task:Task):T;
     /**删除任务 */
-    abstract deleteTask<T = any>(task:Task):T;
+    abstract deleteTask<T = Task|Error>(task:Task):T;
+
+    /** */
 
 }
