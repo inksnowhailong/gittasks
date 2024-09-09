@@ -1,25 +1,24 @@
 /** 单个任务类型 */
-export interface Task{
-    /**任务名称 */
-    name:string;
-    /**自定义信息 */
-    meta?:Record<string,any>;
-    /**创建时间 */
-    createTime:Number;
-
+export type Task =  {
+  /**任务名称 */
+  name: string;
+  /**自定义信息 */
+  meta?: Record<string, any>;
+  /**创建时间 */
+  createTime: Number;
 }
 /**任务的数组 */
-export interface TasksList extends Array<Task>{}
+export type TasksList = Task[];
 
-export abstract class TaskAbstract{
-
-    /**获取列表 */
-    abstract getList<T = TasksList|Error>(...ary:any[]):T|Promise<T>;
-    /**添加任务 */
-    abstract addTask<T = Task|Error>(task:Task):T;
-    /**删除任务 */
-    abstract deleteTask<T = Task|Error>(task:Task):T;
-
-    /** */
-
+export interface TaskTodo {
+  /**获取列表 */
+  getList<T = TasksList | Error>(...ary: any[]): T | Promise<T>;
+  /**添加任务 */
+  addTask<T = Task | Error>(task: Task): T;
+  /**完成任务 */
+  finishTask<T = Task | Error>(task: Task): T;
+  /**修改任务描述 */
+  updateTask<T = Task | Error>(task: Task): T;
+  /**删除任务 */
+  deleteTask<T = Task | Error>(task: Task): T;
 }

@@ -1,34 +1,31 @@
-export abstract class TaskGitAction {
+export interface TaskGitAction<T = any> {
   /** 获取git分支列表 */
-  abstract getBranchList<T = any[] | Error>(...ary: any[]): Promise<T>;
+  getBranchList<R = T[] | Error>(...ary: any[]): Promise<R>;
   /**新建分支 */
-  abstract createBranch<T = any | Error>(
+  createBranch<R = T | Error>(
     branchName: string,
     fatherbranch: string,
     ...ary: any[]
-  ): Promise<T>;
+  ): Promise<R>;
   /**删除分支 */
-  abstract deleteBranch<T = any | Error>(
+  deleteBranch<R = T | Error>(
     branchName: string, //分支名称
     triggerBranch: string, // 要切换到的分支
     ...ary: any[]
-  ): Promise<T>;
+  ): Promise<R>;
   /**切换分支 */
-  abstract switchBranch<T = any | Error>(
+  switchBranch<R = T | Error>(
     branchName: string, //分支名称
     ...ary: any[]
-  ): Promise<T>;
+  ): Promise<R>;
   /**获取当前分支 */
-  abstract getCurrentBranch<T = string | Error>(...ary: any[]): Promise<T>;
+  getCurrentBranch<R = T | Error>(...ary: any[]): Promise<R>;
   /**获取当前分支的父分支 */
-  abstract getFatherBranch<T = string | Error>(
+  getFatherBranch<R = T | Error>(
     branchName: string,
     ...ary: any[]
-  ): Promise<T>;
+  ): Promise<R>;
 
   /**合并当前分支到father分支 */
-  abstract mergeBranch<T = any | Error>(
-    branchName: string,
-    ...ary: any[]
-  ): Promise<T>;
+  mergeBranch<R = T | Error>(branchName: string, ...ary: any[]): Promise<R>;
 }
