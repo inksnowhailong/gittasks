@@ -1,6 +1,7 @@
 import { TaskGitAction } from "../abstract/git.abstract";
+import { Task } from "../abstract/task.abstract";
 
-export class  TaskGitActionImpl extends TaskGitAction {
+export class  TaskGitActionImpl implements TaskGitAction<Task> {
     getBranchList<T = any[] | Error>(...ary: any[]): Promise<T> {
         throw new Error("Method not implemented.");
     }
@@ -23,6 +24,5 @@ export class  TaskGitActionImpl extends TaskGitAction {
         throw new Error("Method not implemented.");
     }
     constructor() {
-        super()
     }
 }
